@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'apps.V1.accounts'
+    'apps.V1.accounts',
+    'corsheaders'
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
@@ -46,6 +47,8 @@ AUTH_USER_MODEL = 'accounts.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -83,6 +86,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Password validation
@@ -135,6 +140,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication'
     ),
 }
+
+APPEND_SLASH=False
 
 from datetime import timedelta
 
